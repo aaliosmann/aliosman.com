@@ -1,0 +1,858 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ali Osman Usta | Sıva · Fayans · Alçı · Boya · Tadilat — İstanbul & Kocaeli</title>
+<meta name="description" content="İstanbul (Anadolu Yakası) ve Kocaeli'de sıva, fayans, alçı, boya ve tadilat-tamirat işleri. Temiz işçilik, dürüst fiyat. Hemen ara, ücretsiz keşif yapalım.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+  /* ============ SİTE BİLGİLERİ ============
+     Usta: Ali Osman Usta
+     Telefon / WhatsApp: 0541 658 10 80
+     Hizmet bölgesi: aşağıdaki "hizmet-bolgeleri" kısmından düzenlenebilir
+     ===================================================== */
+
+  :root{
+    --zemin: #EFE9DD;
+    --zemin-koyu: #E3DCCC;
+    --kiremit: #C1502E;
+    --kiremit-koyu: #9C3D21;
+    --duvar: #2B2A26;
+    --duvar-yumusak: #45433C;
+    --beyaz-siva: #FBF8F2;
+    --metal: #6E6B5F;
+    --cizgi: rgba(43,42,38,0.12);
+    --basari: #4C7A52;
+
+    --font-baslik: 'Fraunces', serif;
+    --font-govde: 'Inter', sans-serif;
+
+    --radius: 10px;
+    --gap: clamp(1.2rem, 3vw, 2rem);
+  }
+
+  *{ margin:0; padding:0; box-sizing:border-box; }
+
+  html{ scroll-behavior:smooth; }
+
+  body{
+    background:var(--zemin);
+    color:var(--duvar);
+    font-family:var(--font-govde);
+    line-height:1.55;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+
+  img, svg{ display:block; max-width:100%; }
+
+  a{ color:inherit; text-decoration:none; }
+
+  ::selection{ background:var(--kiremit); color:var(--beyaz-siva); }
+
+  :focus-visible{
+    outline: 3px solid var(--kiremit);
+    outline-offset: 3px;
+    border-radius: 4px;
+  }
+
+  .container{
+    max-width:1140px;
+    margin:0 auto;
+    padding-inline: clamp(1.25rem, 5vw, 2.5rem);
+  }
+
+  h1,h2,h3{
+    font-family:var(--font-baslik);
+    line-height:1.08;
+    letter-spacing:-0.01em;
+    color:var(--duvar);
+  }
+
+  .eyebrow{
+    font-family:var(--font-govde);
+    font-weight:700;
+    font-size:0.78rem;
+    letter-spacing:0.14em;
+    text-transform:uppercase;
+    color:var(--kiremit-koyu);
+  }
+
+  .btn{
+    display:inline-flex;
+    align-items:center;
+    gap:0.6rem;
+    font-family:var(--font-govde);
+    font-weight:700;
+    font-size:1rem;
+    padding:0.95rem 1.6rem;
+    border-radius: 999px;
+    border:2px solid transparent;
+    cursor:pointer;
+    transition: transform .15s ease, box-shadow .15s ease, background .15s ease;
+    white-space:nowrap;
+  }
+  .btn:hover{ transform: translateY(-2px); }
+  .btn:active{ transform: translateY(0); }
+
+  .btn-ara{
+    background:var(--kiremit);
+    color:var(--beyaz-siva);
+    box-shadow: 0 6px 0 0 var(--kiremit-koyu);
+  }
+  .btn-ara:hover{ box-shadow: 0 8px 0 0 var(--kiremit-koyu); }
+  .btn-ara:active{ box-shadow: 0 3px 0 0 var(--kiremit-koyu); }
+
+  .btn-whatsapp{
+    background:#2E7D32;
+    color:var(--beyaz-siva);
+    box-shadow: 0 6px 0 0 #1B5E20;
+  }
+  .btn-whatsapp:hover{ box-shadow: 0 8px 0 0 #1B5E20; }
+  .btn-whatsapp:active{ box-shadow: 0 3px 0 0 #1B5E20; }
+
+  .btn-ghost{
+    background:transparent;
+    border-color: var(--duvar);
+    color: var(--duvar);
+  }
+  .btn-ghost:hover{ background: var(--duvar); color: var(--beyaz-siva); }
+
+  /* ===== Mala izi doku şeridi (imza öğe) ===== */
+  .mala-izi{
+    width:100%;
+    height:14px;
+    display:block;
+  }
+  .mala-izi path{ stroke:var(--kiremit); }
+
+  /* ===== Üst bar ===== */
+  .ustbar{
+    position:sticky;
+    top:0;
+    z-index:50;
+    background: rgba(239,233,221,0.92);
+    backdrop-filter: blur(6px);
+    border-bottom:1px solid var(--cizgi);
+  }
+  .ustbar-ic{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding-block: 0.9rem;
+    gap:1rem;
+  }
+  .logo{
+    font-family:var(--font-baslik);
+    font-weight:700;
+    font-size:1.25rem;
+    display:flex;
+    align-items:center;
+    gap:0.5rem;
+  }
+  .logo .nokta{ color:var(--kiremit); }
+  .ustbar-aksiyon{ display:flex; gap:0.6rem; }
+  .ustbar-aksiyon .btn{ padding:0.7rem 1.1rem; font-size:0.92rem; }
+  .sadece-masaustu{ display:inline-flex; }
+  @media (max-width: 640px){
+    .sadece-masaustu{ display:none; }
+  }
+
+  /* ===== Hero ===== */
+  .hero{
+    padding-block: clamp(3rem, 8vw, 6rem) clamp(2.5rem, 6vw, 4rem);
+    position:relative;
+  }
+  .hero-ic{
+    display:grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: clamp(2rem, 5vw, 4rem);
+    align-items:center;
+  }
+  @media (max-width: 880px){
+    .hero-ic{ grid-template-columns:1fr; }
+  }
+  .hero h1{
+    font-size: clamp(2.4rem, 5.4vw, 3.8rem);
+    margin-block: 0.9rem 1.1rem;
+  }
+  .hero h1 em{
+    font-style:normal;
+    color:var(--kiremit);
+    font-weight:600;
+  }
+  .hero p.lead{
+    font-size:1.15rem;
+    color:var(--duvar-yumusak);
+    max-width:34ch;
+    margin-bottom:1.8rem;
+  }
+  .hero-aksiyonlar{
+    display:flex;
+    flex-wrap:wrap;
+    gap:0.9rem;
+    margin-bottom:1.6rem;
+  }
+  .hero-guven{
+    display:flex;
+    flex-wrap:wrap;
+    gap:1.4rem;
+    font-size:0.92rem;
+    color:var(--duvar-yumusak);
+  }
+  .hero-guven span{ display:flex; align-items:center; gap:0.45rem; font-weight:600; }
+  .hero-guven svg{ width:18px; height:18px; flex-shrink:0; color:var(--kiremit); }
+
+  /* Hero görsel: SVG ile "duvar kesiti" illüstrasyonu */
+  .hero-gorsel{
+    position:relative;
+    aspect-ratio: 4/5;
+    border-radius: 16px;
+    overflow:hidden;
+    background:var(--duvar);
+    box-shadow: 0 20px 50px -20px rgba(43,42,38,0.4);
+  }
+  .hero-gorsel svg{ width:100%; height:100%; }
+
+  /* ===== Hizmetler ===== */
+  .bolum{ padding-block: clamp(3rem, 7vw, 5rem); }
+  .bolum-baslik{
+    max-width:42ch;
+    margin-bottom: clamp(2rem, 5vw, 3rem);
+  }
+  .bolum-baslik h2{
+    font-size: clamp(1.9rem, 3.6vw, 2.6rem);
+    margin-top:0.6rem;
+  }
+
+  .hizmet-izgara{
+    display:grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.1rem;
+  }
+  @media (max-width: 880px){ .hizmet-izgara{ grid-template-columns: repeat(2,1fr); } }
+  @media (max-width: 560px){ .hizmet-izgara{ grid-template-columns: 1fr; } }
+
+  .hizmet-karti{
+    background:var(--beyaz-siva);
+    border:1px solid var(--cizgi);
+    border-radius: var(--radius);
+    padding: 1.6rem 1.5rem;
+    position:relative;
+    transition: transform .18s ease, box-shadow .18s ease;
+  }
+  .hizmet-karti:hover{
+    transform: translateY(-4px);
+    box-shadow: 0 16px 30px -18px rgba(43,42,38,0.3);
+  }
+  .hizmet-ikon{
+    width:46px; height:46px;
+    border-radius:10px;
+    background: var(--zemin-koyu);
+    display:flex; align-items:center; justify-content:center;
+    margin-bottom:1rem;
+  }
+  .hizmet-ikon svg{ width:24px; height:24px; color:var(--kiremit-koyu); }
+  .hizmet-karti h3{ font-size:1.18rem; margin-bottom:0.4rem; }
+  .hizmet-karti p{ color:var(--duvar-yumusak); font-size:0.95rem; }
+  .hizmet-etiket{
+    position:absolute;
+    top:1.2rem; right:1.2rem;
+    font-size:0.7rem;
+    font-weight:700;
+    letter-spacing:0.04em;
+    background:var(--kiremit);
+    color:var(--beyaz-siva);
+    padding:0.25rem 0.55rem;
+    border-radius:999px;
+  }
+
+  /* ===== Süreç (gerçek sıra olduğu için numaralı) ===== */
+  .surec{ background:var(--duvar); color:var(--beyaz-siva); border-radius: 18px; padding: clamp(2rem,5vw,3.5rem); }
+  .surec .eyebrow{ color:#E7A07B; }
+  .surec h2{ color:var(--beyaz-siva); }
+  .surec-izgara{
+    display:grid;
+    grid-template-columns: repeat(4,1fr);
+    gap:1.5rem;
+    margin-top:2rem;
+  }
+  @media (max-width: 880px){ .surec-izgara{ grid-template-columns: repeat(2,1fr); } }
+  @media (max-width: 540px){ .surec-izgara{ grid-template-columns: 1fr; } }
+  .surec-adim .no{
+    font-family:var(--font-baslik);
+    font-size:2.2rem;
+    color:var(--kiremit);
+    line-height:1;
+    margin-bottom:0.6rem;
+  }
+  .surec-adim h3{ color:var(--beyaz-siva); font-family:var(--font-govde); font-size:1.05rem; font-weight:700; margin-bottom:0.4rem; }
+  .surec-adim p{ color:#C9C6BC; font-size:0.92rem; }
+
+  /* ===== Bölgeler ===== */
+  .bolge-liste{
+    display:flex;
+    flex-wrap:wrap;
+    gap:0.6rem;
+    margin-top:1.5rem;
+  }
+  .bolge-cip{
+    background:var(--beyaz-siva);
+    border:1px solid var(--cizgi);
+    padding:0.5rem 1rem;
+    border-radius:999px;
+    font-size:0.9rem;
+    font-weight:600;
+    color:var(--duvar-yumusak);
+  }
+
+  /* ===== Yorumlar ===== */
+  .yorum-izgara{
+    display:grid;
+    grid-template-columns: repeat(3,1fr);
+    gap:1.2rem;
+  }
+  @media (max-width: 880px){ .yorum-izgara{ grid-template-columns: 1fr; } }
+  .yorum-karti{
+    background:var(--beyaz-siva);
+    border-radius: var(--radius);
+    padding:1.6rem;
+    border:1px solid var(--cizgi);
+  }
+  .yildizlar{ color:var(--kiremit); letter-spacing:0.15em; margin-bottom:0.7rem; font-size:1rem; }
+  .yorum-karti p.metin{ color:var(--duvar-yumusak); font-size:0.95rem; margin-bottom:1rem; }
+  .yorum-isim{ font-weight:700; font-size:0.9rem; }
+  .yorum-yer{ color:var(--metal); font-size:0.82rem; }
+
+  /* ===== SSS ===== */
+  .sss-liste{ max-width:760px; margin-top:1.5rem; }
+  .sss-ogesi{
+    border-bottom:1px solid var(--cizgi);
+  }
+  .sss-soru{
+    width:100%;
+    text-align:left;
+    background:none;
+    border:none;
+    padding:1.25rem 0;
+    font-family:var(--font-govde);
+    font-weight:700;
+    font-size:1.02rem;
+    color:var(--duvar);
+    cursor:pointer;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:1rem;
+  }
+  .sss-soru .artiy{
+    font-size:1.4rem;
+    color:var(--kiremit);
+    flex-shrink:0;
+    transition: transform .2s ease;
+    line-height:1;
+  }
+  .sss-ogesi.acik .sss-soru .artiy{ transform: rotate(45deg); }
+  .sss-cevap{
+    max-height:0;
+    overflow:hidden;
+    transition: max-height .25s ease;
+  }
+  .sss-cevap-ic{
+    padding-bottom:1.25rem;
+    color:var(--duvar-yumusak);
+    font-size:0.95rem;
+    max-width:62ch;
+  }
+
+  /* ===== Teklif formu ===== */
+  .teklif{
+    background:var(--zemin-koyu);
+    border-radius:18px;
+    padding: clamp(2rem,5vw,3.2rem);
+    display:grid;
+    grid-template-columns: 1fr 1fr;
+    gap: clamp(1.5rem,4vw,3rem);
+    align-items:start;
+  }
+  @media (max-width: 880px){ .teklif{ grid-template-columns:1fr; } }
+  .teklif h2{ font-size: clamp(1.8rem,3.4vw,2.3rem); margin-bottom:0.7rem; }
+  .teklif > div:first-child p{ color:var(--duvar-yumusak); max-width:32ch; margin-bottom:1.5rem; }
+
+  .form-alan{ margin-bottom:1rem; }
+  .form-alan label{
+    display:block;
+    font-size:0.85rem;
+    font-weight:700;
+    margin-bottom:0.4rem;
+    color:var(--duvar);
+  }
+  .form-alan input,
+  .form-alan select,
+  .form-alan textarea{
+    width:100%;
+    padding:0.85rem 1rem;
+    border-radius:8px;
+    border:1.5px solid var(--cizgi);
+    background:var(--beyaz-siva);
+    font-family:var(--font-govde);
+    font-size:0.95rem;
+    color:var(--duvar);
+  }
+  .form-alan input:focus,
+  .form-alan select:focus,
+  .form-alan textarea:focus{
+    border-color:var(--kiremit);
+    outline:none;
+  }
+  .form-satir{ display:grid; grid-template-columns:1fr 1fr; gap:1rem; }
+  @media (max-width:480px){ .form-satir{ grid-template-columns:1fr; } }
+  .form-gonder{
+    width:100%;
+    justify-content:center;
+    margin-top:0.4rem;
+    font-size:1.02rem;
+  }
+  .form-not{
+    font-size:0.82rem;
+    color:var(--metal);
+    margin-top:0.8rem;
+  }
+  #form-durum{
+    margin-top:1rem;
+    font-weight:700;
+    font-size:0.92rem;
+    display:none;
+  }
+  #form-durum.goster{ display:block; }
+  #form-durum.basarili{ color:var(--basari); }
+
+  /* ===== Footer ===== */
+  footer{
+    border-top:1px solid var(--cizgi);
+    padding-block:2.2rem;
+  }
+  .footer-ic{
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:space-between;
+    align-items:center;
+    gap:1rem;
+    font-size:0.88rem;
+    color:var(--metal);
+  }
+  .footer-ic a{ font-weight:600; color:var(--duvar); }
+
+  /* ===== Sabit telefon kuşağı (mobil) ===== */
+  .sabit-cta{
+    position:fixed;
+    bottom:0; left:0; right:0;
+    z-index:60;
+    background:var(--beyaz-siva);
+    border-top:1px solid var(--cizgi);
+    padding:0.7rem 1rem;
+    display:flex;
+    gap:0.6rem;
+    box-shadow: 0 -8px 20px -10px rgba(0,0,0,0.15);
+  }
+  .sabit-cta .btn{ flex:1; justify-content:center; padding:0.85rem 1rem; }
+  @media (min-width: 880px){
+    .sabit-cta{ display:none; }
+  }
+  body{ padding-bottom: 0; }
+  @media (max-width: 879px){
+    body{ padding-bottom: 76px; }
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    *{ transition:none !important; animation:none !important; scroll-behavior:auto !important; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ============ ÜST BAR ============ -->
+<header class="ustbar">
+  <div class="container ustbar-ic">
+    <div class="logo">Ali Osman Usta<span class="nokta">.</span></div>
+    <div class="ustbar-aksiyon">
+      <a class="btn btn-ghost sadece-masaustu" href="#hizmetler">Hizmetler</a>
+      <a class="btn btn-ara" href="tel:+905416581080">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+      Hemen Ara</a>
+    </div>
+  </div>
+  <svg class="mala-izi" viewBox="0 0 1200 14" preserveAspectRatio="none"><path d="M0 7 Q 30 0, 60 7 T 120 7 T 180 7 T 240 7 T 300 7 T 360 7 T 420 7 T 480 7 T 540 7 T 600 7 T 660 7 T 720 7 T 780 7 T 840 7 T 900 7 T 960 7 T 1020 7 T 1080 7 T 1140 7 T 1200 7" fill="none" stroke-width="2" opacity="0.5"/></svg>
+</header>
+
+<!-- ============ HERO ============ -->
+<section class="hero">
+  <div class="container hero-ic">
+    <div>
+      <p class="eyebrow">İstanbul (Anadolu Yakası) & Kocaeli · Sıva · Fayans · Alçı · Boya</p>
+      <h1>Duvarın derdi neyse, <em>çözümü elimde.</em></h1>
+      <p class="lead">25 yıllık ustalık. Sıva, fayans, alçı, boya ve tadilat-tamirat işlerinde temiz işçilik, net fiyat, sözünde duran usta.</p>
+      <div class="hero-aksiyonlar">
+        <a class="btn btn-ara" href="tel:+905416581080">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          0541 658 10 80</a>
+        <a class="btn btn-whatsapp" href="https://wa.me/905416581080" target="_blank" rel="noopener">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.6 6.32A8.86 8.86 0 0 0 12.05 4a8.94 8.94 0 0 0-7.74 13.4L3 21l3.7-1.28A8.93 8.93 0 0 0 12.05 21h0a8.94 8.94 0 0 0 5.55-15.68zM12.05 19.4a7.4 7.4 0 0 1-3.78-1.04l-.27-.16-2.81.97.93-2.74-.18-.28a7.42 7.42 0 1 1 13.78-3.91 7.43 7.43 0 0 1-7.67 8.16zm4.07-5.56c-.22-.11-1.31-.65-1.51-.72-.2-.08-.35-.11-.5.11-.15.22-.57.72-.7.87-.13.15-.26.16-.48.05-.22-.11-.93-.34-1.77-1.1-.65-.58-1.09-1.3-1.22-1.52-.13-.22-.01-.34.11-.45.11-.11.25-.28.37-.42.12-.14.16-.24.24-.4.08-.16.04-.3-.04-.41-.08-.11-.5-1.2-.69-1.65-.18-.43-.37-.37-.5-.38-.13-.01-.28-.01-.43-.01-.15 0-.39.06-.6.28-.21.22-.8.78-.8 1.9 0 1.12.82 2.2 .93 2.35.11.15 1.57 2.4 3.8 3.27 2.23.87 2.23.58 2.63.54.4-.04 1.31-.53 1.49-1.05.18-.51.18-.95.13-1.05-.06-.1-.21-.16-.43-.27z"/></svg>
+          WhatsApp'tan Yaz</a>
+      </div>
+      <div class="hero-guven">
+        <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Ücretsiz keşif</span>
+        <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>İşçilik garantisi</span>
+        <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Aynı gün dönüş</span>
+      </div>
+    </div>
+
+    <div class="hero-gorsel">
+      <svg viewBox="0 0 400 500" xmlns="http://www.w3.org/2000/svg">
+        <rect width="400" height="500" fill="#2B2A26"/>
+        <!-- sol: çıplak tuğla/sıva öncesi -->
+        <g opacity="0.9">
+          <rect x="0" y="0" width="200" height="500" fill="#45433C"/>
+          <g stroke="#2B2A26" stroke-width="2">
+            <rect x="10" y="20" width="80" height="34" fill="#5b574c"/>
+            <rect x="100" y="20" width="80" height="34" fill="#534f44"/>
+            <rect x="10" y="62" width="80" height="34" fill="#534f44"/>
+            <rect x="100" y="62" width="80" height="34" fill="#5b574c"/>
+            <rect x="-30" y="62" width="50" height="34" fill="#534f44"/>
+            <rect x="10" y="104" width="80" height="34" fill="#5b574c"/>
+            <rect x="100" y="104" width="80" height="34" fill="#534f44"/>
+            <rect x="10" y="146" width="80" height="34" fill="#534f44"/>
+            <rect x="100" y="146" width="80" height="34" fill="#5b574c"/>
+            <rect x="-30" y="146" width="50" height="34" fill="#534f44"/>
+            <rect x="10" y="188" width="80" height="34" fill="#5b574c"/>
+            <rect x="100" y="188" width="80" height="34" fill="#534f44"/>
+            <rect x="10" y="230" width="80" height="34" fill="#534f44"/>
+            <rect x="100" y="230" width="80" height="34" fill="#5b574c"/>
+            <rect x="-30" y="230" width="50" height="34" fill="#534f44"/>
+          </g>
+        </g>
+        <!-- sağ: bitmiş sıva/boya -->
+        <rect x="200" y="0" width="200" height="500" fill="#EFE9DD"/>
+        <rect x="200" y="0" width="200" height="500" fill="url(#dokusu)" opacity="0.4"/>
+        <defs>
+          <pattern id="dokusu" width="40" height="40" patternUnits="userSpaceOnUse">
+            <path d="M0 20 Q10 15,20 20 T40 20" stroke="#C1502E" stroke-width="0.6" fill="none" opacity="0.3"/>
+          </pattern>
+        </defs>
+        <!-- orta: mala / sıva aleti hattı -->
+        <g transform="translate(184,210) rotate(34)">
+          <rect x="-8" y="-70" width="16" height="70" rx="4" fill="#8a8170"/>
+          <rect x="-55" y="-6" width="110" height="44" rx="4" fill="#C1502E"/>
+          <rect x="-55" y="-6" width="110" height="10" fill="#9C3D21"/>
+        </g>
+        <text x="210" y="460" fill="#2B2A26" font-family="Fraunces, serif" font-size="22" font-weight="600">öncesi → sonrası</text>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<!-- ============ HİZMETLER ============ -->
+<section class="bolum" id="hizmetler">
+  <div class="container">
+    <div class="bolum-baslik">
+      <p class="eyebrow">Ne İşler Yapıyorum</p>
+      <h2>Duvardan tavana, zeminden boyaya her şey</h2>
+    </div>
+
+    <div class="hizmet-izgara">
+
+      <div class="hizmet-karti">
+        <span class="hizmet-etiket">En çok istenen</span>
+        <div class="hizmet-ikon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+        </div>
+        <h3>Sıva</h3>
+        <p>İç-dış cephe sıva, kaba ve ince sıva, tamir sıvası. Düz ve terazide yüzey garantisi.</p>
+      </div>
+
+      <div class="hizmet-karti">
+        <div class="hizmet-ikon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
+        </div>
+        <h3>Fayans &amp; Seramik</h3>
+        <p>Banyo, mutfak fayansı, zemin seramiği, derz ve silikon işleri. Eski fayans söküm dahil.</p>
+      </div>
+
+      <div class="hizmet-karti">
+        <div class="hizmet-ikon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2 2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+        </div>
+        <h3>Alçı &amp; Asma Tavan</h3>
+        <p>Alçıpan bölme, asma tavan, kartonpiyer, alçı sıva ve dekoratif alçı uygulamaları.</p>
+      </div>
+
+      <div class="hizmet-karti">
+        <div class="hizmet-ikon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 21h18M9 21V9l3-6 3 6v12"/></svg>
+        </div>
+        <h3>Boya &amp; Badana</h3>
+        <p>İç-dış cephe boyası, badana, dekoratif boya, ahşap ve metal boyası, macunlama.</p>
+      </div>
+
+      <div class="hizmet-karti">
+        <div class="hizmet-ikon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg>
+        </div>
+        <h3>Tadilat &amp; Tamirat</h3>
+        <p>Su kaçağı, çatlak, nem, dolap montajı, küçük tesisat ve genel ev tadilatı işleri.</p>
+      </div>
+
+      <div class="hizmet-karti">
+        <div class="hizmet-ikon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-6 9 6v11a1 1 0 0 1-1 1h-5v-7H9v7H4a1 1 0 0 1-1-1z"/></svg>
+        </div>
+        <h3>Komple Daire Yenileme</h3>
+        <p>Taşınmadan önce baştan sona yenileme: sıva, fayans, alçı, boya tek elden, tek faturada.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============ SÜREÇ ============ -->
+<section class="bolum">
+  <div class="container">
+    <div class="surec">
+      <p class="eyebrow">Nasıl Çalışıyoruz</p>
+      <h2>Aramadan teslime 4 adım</h2>
+      <div class="surec-izgara">
+        <div class="surec-adim">
+          <div class="no">01</div>
+          <h3>Ara veya yaz</h3>
+          <p>Telefon ya da WhatsApp'tan işini anlat, fotoğraf gönder.</p>
+        </div>
+        <div class="surec-adim">
+          <div class="no">02</div>
+          <h3>Keşif yaparım</h3>
+          <p>Yerinde bakar, ölçer, malzemeyi birlikte konuşuruz.</p>
+        </div>
+        <div class="surec-adim">
+          <div class="no">03</div>
+          <h3>Net fiyat veririm</h3>
+          <p>Sürpriz ek ücret yok. Anlaştığımız fiyat sabit kalır.</p>
+        </div>
+        <div class="surec-adim">
+          <div class="no">04</div>
+          <h3>İşi teslim ederim</h3>
+          <p>Temiz, zamanında, kontrol ettiğin şekilde teslim.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ BÖLGELER ============ -->
+<section class="bolum">
+  <div class="container">
+    <div class="bolum-baslik">
+      <p class="eyebrow">Hizmet Bölgesi</p>
+      <h2>İstanbul Anadolu Yakası ve Kocaeli'ye geliyorum</h2>
+    </div>
+    <!-- Buraya kendi çalıştığın ilçe/semtleri yazabilirsin -->
+    <div class="bolge-liste">
+      <span class="bolge-cip">Kadıköy</span>
+      <span class="bolge-cip">Üsküdar</span>
+      <span class="bolge-cip">Ataşehir</span>
+      <span class="bolge-cip">Maltepe</span>
+      <span class="bolge-cip">Kartal</span>
+      <span class="bolge-cip">Pendik</span>
+      <span class="bolge-cip">Tuzla</span>
+      <span class="bolge-cip">Sancaktepe</span>
+      <span class="bolge-cip">Gebze</span>
+      <span class="bolge-cip">Darıca</span>
+      <span class="bolge-cip">İzmit</span>
+      <span class="bolge-cip">+ İstanbul Anadolu Yakası &amp; Kocaeli geneli</span>
+    </div>
+  </div>
+</section>
+
+<!-- ============ YORUMLAR ============
+     Bu bölüm şu an YORUM SATIRI içinde, yani sayfada GÖRÜNMÜYOR.
+     Gerçek müşteri yorumların olduğunda aktif etmek için:
+     1) Bu açıklamanın hemen üstündeki satırı (<!-- ile başlayan) sil
+     2) Bu bölümün en altındaki kapanış işaretini (-- ile biten satırı) sil
+     Böylece bölüm tekrar sayfada görünür hale gelir.
+
+<section class="bolum">
+  <div class="container">
+    <div class="bolum-baslik">
+      <p class="eyebrow">Müşteri Yorumları</p>
+      <h2>İşimi yapan konuşur</h2>
+    </div>
+    <div class="yorum-izgara">
+      <div class="yorum-karti">
+        <div class="yildizlar">★★★★★</div>
+        <p class="metin">"Banyo fayansını üç günde bitirdi, ortalığı tertemiz bıraktı. Fiyat baştan ne dediyse onu ödedim."</p>
+        <div class="yorum-isim">Ayşe K.</div>
+        <div class="yorum-yer">Kadıköy</div>
+      </div>
+      <div class="yorum-karti">
+        <div class="yildizlar">★★★★★</div>
+        <p class="metin">"Tavanda su kaçağından çatlak vardı, alçı ve boyayı tek seferde halletti. İşi bilen birine emanet ettim, içim rahattı."</p>
+        <div class="yorum-isim">Mert D.</div>
+        <div class="yorum-yer">Ataşehir</div>
+      </div>
+      <div class="yorum-karti">
+        <div class="yildizlar">★★★★★</div>
+        <p class="metin">"Komple daireyi yeniledik, sıvadan boyaya kadar tek elden gitti. Vaktinde geldi, sözünde durdu."</p>
+        <div class="yorum-isim">Fatma S.</div>
+        <div class="yorum-yer">Üsküdar</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+-->
+
+
+<!-- ============ SSS ============ -->
+<section class="bolum">
+  <div class="container">
+    <div class="bolum-baslik">
+      <p class="eyebrow">Sıkça Sorulanlar</p>
+      <h2>Aklındaki sorular</h2>
+    </div>
+    <div class="sss-liste" id="sss-liste">
+
+      <div class="sss-ogesi">
+        <button class="sss-soru" aria-expanded="false">
+          Keşif için ücret alıyor musunuz?
+          <span class="artiy">+</span>
+        </button>
+        <div class="sss-cevap">
+          <div class="sss-cevap-ic">Hayır, hizmet bölgemiz içinde keşif tamamen ücretsiz. Yerinde bakar, ölçer, malzeme ve işçiliği birlikte konuşup net bir fiyat veririm.</div>
+        </div>
+      </div>
+
+      <div class="sss-ogesi">
+        <button class="sss-soru" aria-expanded="false">
+          Malzemeyi siz mi getiriyorsunuz?
+          <span class="artiy">+</span>
+        </button>
+        <div class="sss-cevap">
+          <div class="sss-cevap-ic">İstersen malzemeyi ben temin ederim, istersen sen alırsın — ikisi de mümkün. Keşifte hangisinin senin için daha uygun olduğunu birlikte kararlaştırırız.</div>
+        </div>
+      </div>
+
+      <div class="sss-ogesi">
+        <button class="sss-soru" aria-expanded="false">
+          Ortalama bir banyo fayansı kaç günde biter?
+          <span class="artiy">+</span>
+        </button>
+        <div class="sss-cevap">
+          <div class="sss-cevap-ic">Standart bir banyo söküm dahil 2-4 gün arasında biter. Tam süre, mevcut yüzeyin durumuna ve seçilen fayansın boyutuna göre keşifte netleşir.</div>
+        </div>
+      </div>
+
+      <div class="sss-ogesi">
+        <button class="sss-soru" aria-expanded="false">
+          Hafta sonu veya akşam saatlerinde çalışıyor musunuz?
+          <span class="artiy">+</span>
+        </button>
+        <div class="sss-cevap">
+          <div class="sss-cevap-ic">Evet, müsaitlik durumuna göre hafta sonu da çalışıyorum. Hangi gün ve saatin sana uygun olduğunu söylemen yeterli, takvimimi ona göre ayarlarım.</div>
+        </div>
+      </div>
+
+      <div class="sss-ogesi">
+        <button class="sss-soru" aria-expanded="false">
+          İşçilik garantisi veriyor musunuz?
+          <span class="artiy">+</span>
+        </button>
+        <div class="sss-cevap">
+          <div class="sss-cevap-ic">Evet, yaptığım işin arkasındayım. Teslimden sonra işçilikten kaynaklanan bir sorun çıkarsa dönüp düzeltirim.</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============ TEKLİF FORMU ============ -->
+<section class="bolum" id="teklif">
+  <div class="container">
+    <div class="teklif">
+      <div>
+        <p class="eyebrow">Ücretsiz Teklif Al</p>
+        <h2>İşini anlat, seni arayayım</h2>
+        <p>Formu doldur, en kısa zamanda sana dönüş yapayım. İstersen direkt aramayı da tercih edebilirsin.</p>
+        <div style="display:flex;flex-wrap:wrap;gap:0.7rem;">
+          <a class="btn btn-ara" href="tel:+905416581080">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            Doğrudan Ara</a>
+          <a class="btn btn-ghost" href="mailto:info.aliosmann@gmail.com">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+            Mail Gönder</a>
+        </div>
+      </div>
+
+      <form id="teklif-formu" novalidate>
+        <div class="form-satir">
+          <div class="form-alan">
+            <label for="ad">Adın Soyadın</label>
+            <input type="text" id="ad" name="ad" placeholder="Örn. Ahmet Yılmaz" required>
+          </div>
+          <div class="form-alan">
+            <label for="telefon">Telefon</label>
+            <input type="tel" id="telefon" name="telefon" placeholder="0541 658 10 80" required>
+          </div>
+        </div>
+
+        <div class="form-alan">
+          <label for="hizmet">Hangi iş için?</label>
+          <select id="hizmet" name="hizmet" required>
+            <option value="" disabled selected>Seçiniz</option>
+            <option value="siva">Sıva</option>
+            <option value="fayans">Fayans &amp; Seramik</option>
+            <option value="alci">Alçı &amp; Asma Tavan</option>
+            <option value="boya">Boya &amp; Badana</option>
+            <option value="tadilat">Tadilat &amp; Tamirat</option>
+            <option value="komple">Komple Daire Yenileme</option>
+            <option value="diger">Diğer</option>
+          </select>
+        </div>
+
+        <div class="form-alan">
+          <label for="mesaj">Kısaca işini anlat</label>
+          <textarea id="mesaj" name="mesaj" rows="4" placeholder="Örn. 2 odalı dairede sıva ve boya yapılacak, yaklaşık 90 m²"></textarea>
+        </div>
+
+        <button type="submit" class="btn btn-ara form-gonder">Teklif İste</button>
+        <p class="form-not">Bilgilerin sadece seninle iletişim kurmak için kullanılır, kimseyle paylaşılmaz.</p>
+        <p id="form-durum"></p>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <div class="container footer-ic">
+    <div>© <span id="yil"></span> Ali Osman Usta — Sıva · Fayans · Alçı · Boya · Tadilat İşleri</div>
+    <div>
+      <a href="tel:+905416581080">0541 658 10 80</a> ·
+      <a href="mailto:info.aliosmann@gmail.com">info.aliosmann@gmail.com</a> ·
+      İstanbul (Anadolu Yakası) &amp; Kocaeli
+    </div>
+  </div>
+</footer>
+
+<!-- ============ MOBİL SABİT ARAMA KUŞAĞI ============ -->
+<div class="sabit-cta">
+  <a class="btn btn-ara" href="tel:+905416581080">Hemen Ara</a>
+  <a class="btn btn-whatsapp" href="https://wa.me/905416581080" target="_blank" rel="noopener">WhatsApp</a>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
